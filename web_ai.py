@@ -1,5 +1,22 @@
 import streamlit as st
 import requests
+import streamlit as st
+
+# ================= 访问密码锁 =================
+if "password_correct" not in st.session_state:
+    st.session_state["password_correct"] = False
+
+if not st.session_state["password_correct"]:
+    st.title("🔒 内部系统登录")
+    pwd = st.text_input("请输入访问密码：", type="password")
+    if st.button("登录"):
+        if pwd == "888888":
+            st.session_state["password_correct"] = True
+            st.rerun()
+        else:
+            st.error("密码错误，请重试！")
+    st.stop()  # 密码不对，后面的代码全部停止运行！
+# ==============================================
 
 # 网页配置
 st.set_page_config(page_title="爆款文案工厂", page_icon="🏭", layout="centered")
@@ -7,7 +24,7 @@ st.title("🏭 爆款文案工厂 (v2.0)")
 st.caption("自研 AI 引擎驱动，一键生成闲鱼/小红书高转化文案。")
 
 # 你的 API Key (记得替换成真实的)
-api_key = st.secrets["DEEPSEEK_API_KEY"]
+api_key = st.secrets["DEEPSEEK API_KEY"]
 
 # 用两列排版输入框和下拉菜单
 col1, col2 = st.columns([2, 1])
