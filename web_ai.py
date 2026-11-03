@@ -24,7 +24,7 @@ st.title("🏭 爆款文案工厂 (v2.0)")
 st.caption("自研 AI 引擎驱动，一键生成闲鱼/小红书高转化文案。")
 
 # 你的 API Key (记得替换成真实的)
-api_key = st.secrets["DEEPSEEK API_KEY"]
+api_key = st.secrets["DEEPSEEK_API_KEY"]
 
 # 用两列排版输入框和下拉菜单
 col1, col2 = st.columns([2, 1])
