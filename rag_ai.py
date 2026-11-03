@@ -1,5 +1,22 @@
 import streamlit as st
 import requests
+import streamlit as st
+
+# ================= 访问密码锁 =================
+if "password_correct" not in st.session_state:
+    st.session_state["password_correct"] = False
+
+if not st.session_state["password_correct"]:
+    st.title("🔒 内部系统登录")
+    pwd = st.text_input("请输入访问密码：", type="password")
+    if st.button("登录"):
+        if pwd == "888888":
+            st.session_state["password_correct"] = True
+            st.rerun()
+        else:
+            st.error("密码错误，请重试！")
+    st.stop()  # 密码不对，后面的代码全部停止运行！
+# ==============================================
 
 st.set_page_config(page_title="AI 专属知识库", page_icon="📚")
 st.title("📚 AI 专属文档问答助手")
